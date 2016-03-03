@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myview="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:text="2.手机卡绑定"
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:background="#8866ff00"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="通过绑定sim卡"
+        android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下次重启手机如果发现sim卡变化\n就会发送报警短信"
+        android:textSize="22dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <example.com.mymobilesafe.setting.view.SettingItemView
+        myview:text_title="点击绑定sim卡"
+        myview:description_on="sim卡已经绑定"
+        myview:description_off="sim卡没有绑定"
+        android:id="@+id/security_setting2_bind_sim_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </example.com.mymobilesafe.setting.view.SettingItemView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_online"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bind"
+            android:layout_centerInParent="true"
+            />
+        <Button
+            style="@style/security_setting_pre_bt"
+            />
+        <Button
+            style="@style/security_setting_next_bt"
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>
