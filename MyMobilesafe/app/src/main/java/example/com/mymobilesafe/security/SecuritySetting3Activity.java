@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import example.com.mymobilesafe.R;
 
 public class SecuritySetting3Activity extends SecurityBaseActivity {
-
+    private EditText mEtNumber ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,7 @@ public class SecuritySetting3Activity extends SecurityBaseActivity {
     }
 
     private void initView() {
-
+        mEtNumber = (EditText) findViewById(R.id.security_setting3_telephone_et);
     }
     private void initData() {
 
@@ -48,5 +49,14 @@ public class SecuritySetting3Activity extends SecurityBaseActivity {
     public void selectContact(View view){
         Intent intent = new Intent(this,SelectContactActivity.class);
         startActivityForResult(intent,0);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data != null){
+            String number = data.getStringExtra("number").replace("-","");
+            mEtNumber.setText(number);
+        }
     }
 }

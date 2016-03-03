@@ -2,12 +2,15 @@ package example.com.mymobilesafe.security;
 
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
 import example.com.mymobilesafe.R;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -20,22 +23,37 @@ import java.util.Map;
  */
 public class SelectContactActivity extends Activity {
     private ListView listView ;
+    private SimpleAdapter contactsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_contact_layout);
         initData();
         initView();
-
+        setListener();
     }
 
     private void initView() {
         listView = (ListView) findViewById(R.id.select_contact_listview);
-        listView.setAdapter(new SimpleAdapter(this,getContactsData(),R.layout.contacts_layout_lv_item
-        ,new String[]{"name","number"},new int[]{R.id.tv_name,R.id.tv_number}));
+        contactsAdapter = new SimpleAdapter(this,getContactsData(),R.layout.contacts_layout_lv_item
+                ,new String[]{"name","number"},new int[]{R.id.tv_name,R.id.tv_number});
+        listView.setAdapter(contactsAdapter);
     }
 
     private void initData() {
+    }
+
+    private void setListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Map<String,String> data = (Map<String, String>) listView.getItemAtPosition(position);
+                Intent intent = new Intent();
+                intent.putExtra("number",data.get("number"));
+                setResult(0,intent);
+                finish();
+            }
+        });
     }
 
     private ArrayList<Map<String,String>> getContactsData(){
