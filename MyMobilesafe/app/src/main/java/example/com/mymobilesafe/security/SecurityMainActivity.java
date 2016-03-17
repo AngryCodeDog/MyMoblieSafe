@@ -3,8 +3,12 @@ package example.com.mymobilesafe.security;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import example.com.mymobilesafe.R;
 
@@ -47,5 +51,10 @@ public class SecurityMainActivity extends Activity {
         startActivity(intent);
         finish();
     }
+
+
+
+
+
 
 }
