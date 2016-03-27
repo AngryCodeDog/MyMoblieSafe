@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sim卡变更后\n报警段兴会发送给安全号码"
+        android:text="sim卡变更后\n报警短信会发送给安全号码"
         android:textSize="25dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"

@@ -1,17 +1,17 @@
 package example.com.mymobilesafe.setting;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import example.com.mymobilesafe.R;
+import example.com.mymobilesafe.activity.BaseActivity;
 import example.com.mymobilesafe.setting.view.SettingItemView;
+import example.com.mymobilesafe.util.GloabalTools;
 
-public class SettingActivity extends Activity {
+public class SettingActivity extends BaseActivity {
     private SettingItemView settingItemView ;
     private boolean isOpenUpdate = true;
-    private SharedPreferences sp ;
 
 
     @Override
@@ -31,8 +31,6 @@ public class SettingActivity extends Activity {
     private void initView() {
         settingItemView = (SettingItemView) findViewById(R.id.setting_layout_itemview);
         settingItemView.setOncheck();
-
-        sp = getSharedPreferences("config",MODE_PRIVATE);
     }
 
     /**
@@ -41,7 +39,7 @@ public class SettingActivity extends Activity {
      *<p>create at 16-1-10 下午5:29
      **/
     private void setListener() {
-        Boolean isUpdate = sp.getBoolean("update",false);
+        Boolean isUpdate = sp.getBoolean(GloabalTools.AUTO_UPDATE,false);
         if(isUpdate){
             settingItemView.setOncheck();
         }else{
@@ -69,9 +67,9 @@ public class SettingActivity extends Activity {
 
     public void saveUpdateSetting(SharedPreferences.Editor editor){
         if(getUpdateStatus()){
-            editor.putBoolean("update",true);
+            editor.putBoolean(GloabalTools.AUTO_UPDATE,true);
         }else{
-            editor.putBoolean("update",false);
+            editor.putBoolean(GloabalTools.AUTO_UPDATE,false);
         }
         editor.commit();
     }

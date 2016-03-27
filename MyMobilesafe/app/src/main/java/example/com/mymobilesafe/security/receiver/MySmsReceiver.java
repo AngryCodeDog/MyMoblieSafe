@@ -1,5 +1,6 @@
 package example.com.mymobilesafe.security.receiver;
 
+import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -93,6 +94,8 @@ public class MySmsReceiver extends BroadcastReceiver {
             }else if("#*lockscreen*#".equals(body)){
                 //远程锁屏
                 Log.e("MySmsReceiver","远程锁屏");
+                DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
+                dpm.lockNow();
                 abortBroadcast();
             }
 

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import example.com.mymobilesafe.R;
 import example.com.mymobilesafe.security.SecurityMainActivity;
 import example.com.mymobilesafe.setting.SettingActivity;
+import example.com.mymobilesafe.util.GloabalTools;
 import example.com.mymobilesafe.util.MD5Util;
 
 /**
@@ -53,7 +54,7 @@ public class HomeActivity extends Activity{
     }
 
     private void initData() {
-        sp = getSharedPreferences("config",MODE_PRIVATE);
+        sp = getSharedPreferences(GloabalTools.CONFIG,MODE_PRIVATE);
     }
 
 
@@ -70,9 +71,13 @@ public class HomeActivity extends Activity{
                     case 0:
                         showSetDialog();
                         break;
+                    case 7:
+                        Intent intent7 = new Intent();
+                        startActivity(intent7);
+                        break;
                     case 8:
-                        Intent intent = new Intent(HomeActivity.this,SettingActivity.class);
-                        startActivity(intent);
+                        Intent intent8 = new Intent(HomeActivity.this,SettingActivity.class);
+                        startActivity(intent8);
                         break;
 
                 }
@@ -119,7 +124,7 @@ public class HomeActivity extends Activity{
                         if(firstPwd.equals(secondPwd)){
                             String password_md5 = MD5Util.encryptWithMD5(firstPwd);
                             SharedPreferences.Editor editor = sp.edit();
-                            editor.putString("password",password_md5);
+                            editor.putString(GloabalTools.SECURITY_PWD,password_md5);
                             editor.commit();
 //                            Toast.makeText(HomeActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
@@ -160,7 +165,7 @@ public class HomeActivity extends Activity{
         View.OnClickListener myOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String pwd = sp.getString("password",null);
+                String pwd = sp.getString(GloabalTools.SECURITY_PWD,null);
                 switch (v.getId()){
                     case R.id.input_pwd_dialog_bt_confirm:
                         String firstPwd = et_firstPwd.getText().toString();
@@ -189,7 +194,7 @@ public class HomeActivity extends Activity{
 
 
     private boolean isSetupPwd(){
-        String pwd = sp.getString("password",null);
+        String pwd = sp.getString(GloabalTools.SECURITY_PWD,null);
         return !TextUtils.isEmpty(pwd);
     }
 

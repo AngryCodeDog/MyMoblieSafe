@@ -7,7 +7,11 @@ import android.view.View;
 
 import example.com.mymobilesafe.R;
 import example.com.mymobilesafe.setting.view.SettingItemView;
+import example.com.mymobilesafe.util.GloabalTools;
 
+/**
+ * 设置界面2,设置绑定sim卡
+ */
 public class SecuritySetting2Activity extends SecurityBaseActivity {
     SettingItemView bind_sim_card_view ;
     private String bind_sim_card_number ;
@@ -46,7 +50,7 @@ public class SecuritySetting2Activity extends SecurityBaseActivity {
 
         bind_sim_card_view = (SettingItemView) findViewById(R.id.security_setting2_bind_sim_card);
         //查看是否设置过绑定，并初始化组件。
-        bind_sim_card_number = sp.getString("sim_card_number",null);
+        bind_sim_card_number = sp.getString(GloabalTools.BIND_SIM_CARD_NUMBER,null);
         if(bind_sim_card_number != null){
             bind_sim_card_view.setOncheck();
         }else{

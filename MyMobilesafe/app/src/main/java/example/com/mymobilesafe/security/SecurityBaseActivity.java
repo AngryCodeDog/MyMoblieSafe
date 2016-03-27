@@ -7,17 +7,18 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import example.com.mymobilesafe.activity.BaseActivity;
+import example.com.mymobilesafe.util.GloabalTools;
+
 /**
  * Created by zyp on 16-2-28.
  */
-public abstract class SecurityBaseActivity extends Activity {
+public abstract class SecurityBaseActivity extends BaseActivity {
 
-    protected SharedPreferences sp;
     private GestureDetector gestureDetector ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sp = getSharedPreferences("config",MODE_PRIVATE);
         gestureDetector = new GestureDetector(new GestureDetector.SimpleOnGestureListener(){
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
@@ -62,7 +63,7 @@ public abstract class SecurityBaseActivity extends Activity {
 
     public void saveBindSimCardState(String sim){
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString("sim_card_number",sim);
+        editor.putString(GloabalTools.BIND_SIM_CARD_NUMBER,sim);
         editor.commit();
     }
 }

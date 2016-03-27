@@ -2,11 +2,16 @@ package example.com.mymobilesafe.security;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import example.com.mymobilesafe.R;
+import example.com.mymobilesafe.util.GloabalTools;
 
+/**
+ * 设置1主要显示各项设置，默认打开gps追踪
+ */
 public class SecuritySetting1Activity extends SecurityBaseActivity {
 
     @Override
@@ -20,6 +25,9 @@ public class SecuritySetting1Activity extends SecurityBaseActivity {
 
     @Override
     public void showNext() {
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(GloabalTools.OPEN_GPS_TRACK,true);
+        editor.commit();
         Intent intent = new Intent(this,SecuritySetting2Activity.class);
         startActivity(intent);
         //这个要求在finish或者startActivity后面

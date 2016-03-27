@@ -36,12 +36,13 @@ import java.net.URL;
 import example.com.mymobilesafe.R;
 import example.com.mymobilesafe.util.Download;
 import example.com.mymobilesafe.util.DownloadHelper;
+import example.com.mymobilesafe.util.GloabalTools;
 import example.com.mymobilesafe.util.StreamTools;
 
 /**
  * 启动界面，进行加载数据，更新提示
  */
-public class SplashActivity extends Activity {
+public class SplashActivity extends BaseActivity {
     /**
      * 进入主页面
      */
@@ -59,16 +60,17 @@ public class SplashActivity extends Activity {
     private TextView tv_version;
     private AlphaAnimation aa;
 
-    private SharedPreferences sp ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_layout);
         aa = new AlphaAnimation(0.3f, 1.0f);
         aa.setDuration(1000);
-        sp = getSharedPreferences("config",MODE_PRIVATE);
         findViews();
-        Boolean isUpdate = sp.getBoolean("update",false);
+        //这里应该是默认设置为自动更新软件的
+
+        //获取是否需要自动去更新软件
+        Boolean isUpdate = sp.getBoolean(GloabalTools.AUTO_UPDATE,false);
         if(isUpdate){//这里暂时没有更新，（不过更新这个功能是可以的，已经测试过）
             checkNewVersion();
         }else {

@@ -20,17 +20,17 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         />
-
+    <TextView
+        style="@style/security_setting1_item"
+        android:text="GPS追踪(默认开启)"
+        android:drawableLeft="@android:drawable/star_big_on"
+        />
     <TextView
         style="@style/security_setting1_item"
         android:text="sim卡变更报警"
         android:drawableLeft="@android:drawable/star_big_on"
         />
-    <TextView
-        style="@style/security_setting1_item"
-        android:text="GPS追踪"
-        android:drawableLeft="@android:drawable/star_big_on"
-        />
+
     <TextView
         style="@style/security_setting1_item"
         android:text="远程数据销毁"
