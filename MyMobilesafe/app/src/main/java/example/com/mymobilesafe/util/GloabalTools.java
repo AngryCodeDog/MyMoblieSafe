@@ -1,5 +1,10 @@
 package example.com.mymobilesafe.util;
 
+import android.app.ActivityManager;
+import android.content.Context;
+
+import java.util.List;
+
 /**
  * Created by zyp on 3/26/16.
  * 全局的静态累，用来存放一些全局的静态变量
@@ -29,5 +34,27 @@ public class GloabalTools {
 
     /**设置远程锁屏*/
     public static String REMOTE_AND_LOCKSCREEN = "complete_and_lockscreen";
+
+    /**设置远程锁屏*/
+    public static String CALL_LISTENE = "call_listene";
+
+
+    /**
+     * 校验服务是否还活着
+     * @param context
+     * @param serviceName
+     * @return
+     */
+    public static boolean isServiceRunning(Context context,String serviceName){
+        //校验服务是否还活着
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> runningServices = activityManager.getRunningServices(100);
+        for(ActivityManager.RunningServiceInfo serviceInfo : runningServices){
+            if(serviceInfo.service.getClassName().equals(serviceName)){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

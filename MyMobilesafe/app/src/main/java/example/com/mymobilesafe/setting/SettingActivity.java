@@ -1,18 +1,24 @@
 package example.com.mymobilesafe.setting;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import example.com.mymobilesafe.R;
-import example.com.mymobilesafe.activity.BaseActivity;
+import example.com.mymobilesafe.home.BaseActivity;
 import example.com.mymobilesafe.setting.view.SettingItemView;
 import example.com.mymobilesafe.util.GloabalTools;
 
+/**
+ * 设置界面
+ */
 public class SettingActivity extends BaseActivity {
-    private SettingItemView settingItemView ;
+    private SettingItemView siv_isUpdate;
+    private SettingItemView siv_callListener;
     private boolean isOpenUpdate = true;
-
+    private boolean isListeningCall = true;
+    private  Intent intentToCallListen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +35,28 @@ public class SettingActivity extends BaseActivity {
      *<p>create at 16-1-10 下午5:29
      **/
     private void initView() {
-        settingItemView = (SettingItemView) findViewById(R.id.setting_layout_itemview);
-        settingItemView.setOncheck();
+        siv_isUpdate = (SettingItemView) findViewById(R.id.setting_layout_auto_update);
+        siv_isUpdate.setOncheck();
+        siv_callListener = (SettingItemView) findViewById(R.id.setting_layout_itemview_call_listener);
+
+        intentToCallListen = new Intent(SettingActivity.this,MyCallListenerService.class);
+
+        isOpenUpdate = sp.getBoolean(GloabalTools.AUTO_UPDATE,false);
+
+
+        if(isOpenUpdate){
+            siv_isUpdate.setOncheck();
+            isOpenUpdate = false;
+        }else{
+            siv_isUpdate.setOffCheck();
+            isOpenUpdate = true;
+        }
+        isListeningCall = GloabalTools.isServiceRunning(this,MyCallListenerService.class.getName());
+        if(isListeningCall){
+            siv_callListener.setOncheck();
+        }else{
+            siv_callListener.setOffCheck();
+        }
     }
 
     /**
@@ -39,43 +65,39 @@ public class SettingActivity extends BaseActivity {
      *<p>create at 16-1-10 下午5:29
      **/
     private void setListener() {
-        Boolean isUpdate = sp.getBoolean(GloabalTools.AUTO_UPDATE,false);
-        if(isUpdate){
-            settingItemView.setOncheck();
-        }else{
-            settingItemView.setOffCheck();
-        }
+        siv_isUpdate.setOnClickListener(MyOnClickListener);
+        siv_callListener.setOnClickListener(MyOnClickListener);
+    }
 
-        final SharedPreferences.Editor editor = sp.edit();
-        settingItemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isOpenUpdate){
-                    settingItemView.setOncheck();
-                    isOpenUpdate = false;
+    View.OnClickListener MyOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SharedPreferences.Editor editor = sp.edit();
+            if(v.getId() == R.id.setting_layout_auto_update){
+               if(isOpenUpdate){
+                   siv_isUpdate.setOncheck();
+                   isOpenUpdate = false;
+               }else{
+                   siv_isUpdate.setOffCheck();
+                   isOpenUpdate = true;
+               }
+                editor.putBoolean(GloabalTools.AUTO_UPDATE,siv_isUpdate.isChecked());
+            }else if(v.getId() == R.id.setting_layout_itemview_call_listener){
+                isListeningCall = GloabalTools.isServiceRunning(SettingActivity.this,MyCallListenerService.class.getName());
+                if(!isListeningCall){
+                    siv_callListener.setOncheck();
+                    isListeningCall = false;
+                    //开启来电监听服务
+                    startService(intentToCallListen);
                 }else{
-                    settingItemView.setOffCheck();
-                    isOpenUpdate = true;
+                    siv_callListener.setOffCheck();
+                    isListeningCall = true;
+                    //停止来电监听服务
+                    stopService(intentToCallListen);
                 }
-                saveUpdateSetting(editor);
             }
-        });
-
-
-
-    }
-
-    public void saveUpdateSetting(SharedPreferences.Editor editor){
-        if(getUpdateStatus()){
-            editor.putBoolean(GloabalTools.AUTO_UPDATE,true);
-        }else{
-            editor.putBoolean(GloabalTools.AUTO_UPDATE,false);
+            editor.commit();
         }
-        editor.commit();
-    }
-
-    public boolean getUpdateStatus(){
-        return settingItemView.isChecked();
-    }
+    };
 
 }

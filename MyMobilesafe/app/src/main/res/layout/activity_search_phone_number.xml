@@ -17,19 +17,19 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText" />
+        android:id="@+id/search_phone_number_et" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="查询"
         android:textSize="20sp"
-        android:id="@+id/button" />
+        android:id="@+id/search_phone_number_bt" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:id="@+id/textView" />
+        android:id="@+id/search_phone_number_tv" />
 
 </LinearLayout>

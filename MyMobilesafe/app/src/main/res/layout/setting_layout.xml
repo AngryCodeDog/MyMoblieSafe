@@ -17,7 +17,16 @@
         myview:text_title="是否开启自动更新"
         myview:description_on="自动更新已开启"
         myview:description_off="自动更新已关闭"
-        android:id="@+id/setting_layout_itemview"
+        android:id="@+id/setting_layout_auto_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </example.com.mymobilesafe.setting.view.SettingItemView>
+
+    <example.com.mymobilesafe.setting.view.SettingItemView
+        myview:text_title="是否开启来电显示"
+        myview:description_on="来电显示已开启"
+        myview:description_off="来电显示已关闭"
+        android:id="@+id/setting_layout_itemview_call_listener"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </example.com.mymobilesafe.setting.view.SettingItemView>

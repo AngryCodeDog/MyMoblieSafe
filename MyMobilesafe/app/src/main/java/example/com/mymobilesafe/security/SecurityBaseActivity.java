@@ -1,13 +1,12 @@
 package example.com.mymobilesafe.security;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import example.com.mymobilesafe.activity.BaseActivity;
+import example.com.mymobilesafe.home.BaseActivity;
 import example.com.mymobilesafe.util.GloabalTools;
 
 /**
