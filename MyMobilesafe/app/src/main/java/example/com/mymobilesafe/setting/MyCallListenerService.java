@@ -11,7 +11,9 @@ import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -84,17 +86,45 @@ public class MyCallListenerService extends Service {
         TextView tv_msg = (TextView) llMyToast.findViewById(R.id.tv_my_toast_msg);
         tv_msg.setText(msg);
 
-        WindowManager.LayoutParams mParams = new WindowManager.LayoutParams();
+        final WindowManager.LayoutParams mParams = new WindowManager.LayoutParams();
         mParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         mParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         mParams.format = PixelFormat.TRANSLUCENT;
+        mParams.gravity = Gravity.TOP + Gravity.LEFT;
+        mParams.x = 100;
+        mParams.y = 100;
         mParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-        mParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+                        |WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        mParams.type = WindowManager.LayoutParams.TYPE_PRIORITY_PHONE;
         //添加到窗体
         windowManager.addView(llMyToast,mParams);
-
+        //设置触摸事件，让来电显示可以拖动
+        llMyToast.setOnTouchListener(new View.OnTouchListener() {
+            int startX ;
+            int startY ;
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        //获取初始位置
+                        startX = (int)event.getRawX();
+                        startY = (int)event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        mParams.x += (int)event.getRawX() - startX;
+                        mParams.y += (int)event.getRawY() - startY;
+                        //更新界面
+                        windowManager.updateViewLayout(llMyToast,mParams);
+                        //更新初始位置
+                        startX = (int)event.getRawX();
+                        startY = (int)event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     //广播接收者的生命周期和服务是一样的。
