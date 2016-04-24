@@ -90,9 +90,9 @@ public class MyCallListenerService extends Service {
         mParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         mParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         mParams.format = PixelFormat.TRANSLUCENT;
-        mParams.gravity = Gravity.TOP + Gravity.LEFT;
-        mParams.x = 100;
-        mParams.y = 100;
+//        mParams.gravity = Gravity.TOP + Gravity.LEFT;
+//        mParams.x = 100;
+//        mParams.y = 100;
         mParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                         |WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         mParams.type = WindowManager.LayoutParams.TYPE_PRIORITY_PHONE;
