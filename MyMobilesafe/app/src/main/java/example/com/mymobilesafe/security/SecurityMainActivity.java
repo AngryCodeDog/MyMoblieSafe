@@ -19,9 +19,8 @@ public class SecurityMainActivity extends SecurityBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security_main);
-        initView();
-        setListener();
         initData();
+        setListener();
     }
 
     @Override
@@ -34,10 +33,10 @@ public class SecurityMainActivity extends SecurityBaseActivity {
 
     }
 
-    private void initView() {
+    public void initView() {
 
     }
-    private void initData() {
+    public void initData() {
         ll_notice = (LinearLayout) findViewById(R.id.security_main_notice_ll);
 
         //防盗保护是否开启

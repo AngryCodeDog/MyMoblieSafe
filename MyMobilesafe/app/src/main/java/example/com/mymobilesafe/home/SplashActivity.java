@@ -60,7 +60,8 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.splash_layout);
         aa = new AlphaAnimation(0.3f, 1.0f);
         aa.setDuration(1000);
-        findViews();
+        initView();
+        initData();
         //复制数据库
         copyDB();
         //这里应该是默认设置为自动更新软件的
@@ -82,11 +83,16 @@ public class SplashActivity extends BaseActivity {
      * <p>author:zyp
      * <p>create at 16-1-3 下午2:26
      **/
-    private void findViews() {
+    public void initView() {
         tv_version = (TextView) findViewById(R.id.tv_splash_version);
         tv_version.setText("版本" + getVersionName());
         View view = findViewById(R.id.rl_root_splash);
         view.setAnimation(aa);
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     /**

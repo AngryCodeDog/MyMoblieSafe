@@ -41,10 +41,10 @@ public class SecuritySetting2Activity extends SecurityBaseActivity {
         this.finish();
     }
 
-    private void initView() {
+    public void initView() {
 
     }
-    private void initData() {
+    public void initData() {
         tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 
 

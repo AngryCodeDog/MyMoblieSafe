@@ -16,15 +16,6 @@
         <item name="android:layout_marginLeft">10dp</item>
     </style>
 
-    ="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="下一步"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentRight="true"
-    android:background="@drawable/security_setting1_buttong_selector"
-    android:layout_marginBottom="10dp"
-    android:layout_marginRight="10dp"
-
     <style name="security_setting_next_bt">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -50,6 +41,17 @@
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:onClick">pre</item>
 
+    </style>
+
+
+    <style name="myCustomTitleBar">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+
+    <style name="MyCustomTheme" parent="android:Theme.Light">
+        <item name="android:windowTitleBackgroundStyle">@style/myCustomTitleBar</item>
+        <item name="android:windowTitleSize">65dp</item>
     </style>
 
 </resources>

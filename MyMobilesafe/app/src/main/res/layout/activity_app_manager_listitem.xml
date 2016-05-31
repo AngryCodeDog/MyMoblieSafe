@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_margin="5dp"
+    >
+
+    <ImageView
+        android:id="@+id/iv_appmanager_appicon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@android:drawable/sym_def_app_icon"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_appmanager_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="默认"
+        android:textSize="20sp"
+        android:layout_toRightOf="@+id/iv_appmanager_appicon"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_appmanager_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="com.example.test"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/iv_appmanager_appicon"
+        android:layout_below="@+id/tv_appmanager_app_name"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightGrey"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

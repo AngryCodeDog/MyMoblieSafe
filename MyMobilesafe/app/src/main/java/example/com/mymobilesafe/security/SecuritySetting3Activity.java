@@ -77,10 +77,10 @@ public class SecuritySetting3Activity extends SecurityBaseActivity {
         this.finish();
     }
 
-    private void initView() {
+    public void initView() {
         mEtNumber = (EditText) findViewById(R.id.security_setting3_telephone_et);
     }
-    private void initData() {
+    public void initData() {
         String security_phone_number = sp.getString(GloabalTools.SECURITY_PHONE_NUMBER,null);
         if(security_phone_number != null){
             mEtNumber.setText(security_phone_number);

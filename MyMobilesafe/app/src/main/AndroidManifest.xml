@@ -22,7 +22,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/MyCustomTheme">
         <activity
             android:name=".home.SplashActivity"
             android:theme="@style/AppTheme">
@@ -76,7 +76,9 @@
         <service
             android:name=".setting.MyCallListenerService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".AppManage.AppManagerActivity"></activity>
     </application>
 
 </manifest>

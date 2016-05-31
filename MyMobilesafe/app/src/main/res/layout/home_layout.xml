@@ -6,13 +6,6 @@
     android:orientation="vertical"
     >
 
-    <TextView
-        android:text="功能列表"
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:background="#8866ff00"/>
     <GridView
         android:id="@+id/home_gv_functionlist"
         android:layout_width="match_parent"

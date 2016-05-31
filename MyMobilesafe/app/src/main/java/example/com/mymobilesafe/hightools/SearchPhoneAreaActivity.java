@@ -28,14 +28,20 @@ public class SearchPhoneAreaActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_phone_number);
-        findView();
+        initView();
+        initData();
         setListener();
     }
 
-    private void findView() {
+    public void initView() {
         mEtPhoneNumber = (EditText) findViewById(R.id.search_phone_number_et);
         mTvPhoneNumberArea = (TextView) findViewById(R.id.search_phone_number_tv);
         mBtSearch = (Button) findViewById(R.id.search_phone_number_bt);
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     private void setListener(){

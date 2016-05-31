@@ -1,9 +1,17 @@
 package example.com.mymobilesafe.util;
 
 import android.app.ActivityManager;
+import android.app.Service;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import example.com.mymobilesafe.AppManage.AppInfo;
 
 /**
  * Created by zyp on 3/26/16.
@@ -55,6 +63,36 @@ public class GloabalTools {
             }
         }
         return false;
+    }
+
+
+    public static List<AppInfo> getAppInfo(Context context){
+        List<AppInfo> myAppInfos = new ArrayList<AppInfo>();
+        PackageManager pm = context.getPackageManager();
+        List<PackageInfo> appInfos = pm.getInstalledPackages(0);
+        for(PackageInfo info : appInfos){
+            AppInfo appInfo = new AppInfo();
+            appInfo.pkgName = info.packageName;
+            appInfo.name = info.applicationInfo.loadLabel(pm).toString();
+            appInfo.icon = info.applicationInfo.loadIcon(pm);
+            int flags = info.applicationInfo.flags;
+            if((flags & ApplicationInfo.FLAG_SYSTEM) == 0){
+                //用户程序
+                appInfo.userApp = true;
+            }else{
+                //系统程序
+                appInfo.userApp = false;
+            }
+            if((flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) == 0){
+                //手机内存中
+                appInfo.inRom = true;
+            }else{
+                //外存储设备中
+                appInfo.inRom = false;
+            }
+            myAppInfos.add(appInfo);
+        }
+        return myAppInfos;
     }
 
 }

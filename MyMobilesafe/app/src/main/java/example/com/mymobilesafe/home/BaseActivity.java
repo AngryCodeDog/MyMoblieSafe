@@ -10,12 +10,18 @@ import example.com.mymobilesafe.util.GloabalTools;
  * Created by zyp on 3/26/16.
  * 所有的Activity的基类
  */
-public class BaseActivity extends Activity {
+public abstract class BaseActivity extends Activity {
     public SharedPreferences sp ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sp = getSharedPreferences(GloabalTools.CONFIG,MODE_PRIVATE);
         super.onCreate(savedInstanceState);
+    }
+
+    public abstract void initView();
+    public abstract void initData();
+    public void back(){
+
     }
 }

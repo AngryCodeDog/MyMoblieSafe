@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import example.com.mymobilesafe.R;
+import example.com.mymobilesafe.View.CustomTitleBar;
 import example.com.mymobilesafe.home.BaseActivity;
 import example.com.mymobilesafe.setting.view.SettingItemView;
 import example.com.mymobilesafe.util.GloabalTools;
@@ -23,8 +24,10 @@ public class SettingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CustomTitleBar.getTitleBar(this,"设置中心",true);
         setContentView(R.layout.setting_layout);
         initView();
+        initData();
         setListener();
     }
 
@@ -34,7 +37,7 @@ public class SettingActivity extends BaseActivity {
      *<p>author:zyp
      *<p>create at 16-1-10 下午5:29
      **/
-    private void initView() {
+    public void initView() {
         siv_isUpdate = (SettingItemView) findViewById(R.id.setting_layout_auto_update);
         siv_isUpdate.setOncheck();
         siv_callListener = (SettingItemView) findViewById(R.id.setting_layout_itemview_call_listener);
@@ -57,6 +60,16 @@ public class SettingActivity extends BaseActivity {
         }else{
             siv_callListener.setOffCheck();
         }
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void back() {
+        finish();
     }
 
     /**

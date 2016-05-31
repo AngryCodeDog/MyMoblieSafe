@@ -20,7 +20,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import example.com.mymobilesafe.AppManage.AppManagerActivity;
 import example.com.mymobilesafe.R;
+import example.com.mymobilesafe.View.CustomTitleBar;
 import example.com.mymobilesafe.hightools.HighToolsMainActivity;
 import example.com.mymobilesafe.security.SecurityMainActivity;
 import example.com.mymobilesafe.setting.SettingActivity;
@@ -30,7 +32,7 @@ import example.com.mymobilesafe.util.MD5Util;
 /**
  * Created by zyp on 16-1-3.
  */
-public class HomeActivity extends Activity{
+public class HomeActivity extends BaseActivity{
     private GridView gv_function ;
     private SharedPreferences sp ;
 
@@ -48,13 +50,14 @@ public class HomeActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CustomTitleBar.getTitleBar(this,"功能列表",false);
         setContentView(R.layout.home_layout);
         initView();
         initData();
         setListener();
     }
 
-    private void initData() {
+    public void initData() {
         sp = getSharedPreferences(GloabalTools.CONFIG,MODE_PRIVATE);
     }
 
@@ -71,6 +74,10 @@ public class HomeActivity extends Activity{
                 switch (position){
                     case 0:
                         showSetDialog();
+                        break;
+                    case 2:
+                        Intent intent2 = new Intent(HomeActivity.this, AppManagerActivity.class);
+                        startActivity(intent2);
                         break;
                     case 7:
                         Intent intent7 = new Intent(HomeActivity.this, HighToolsMainActivity.class);

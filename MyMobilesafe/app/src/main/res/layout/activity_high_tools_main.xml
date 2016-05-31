@@ -6,13 +6,7 @@
     android:orientation="vertical"
     >
 
-    <TextView
-        android:text="高级工具"
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:background="#8866ff00"/>
+
     <TextView
         android:id="@+id/high_tools_phone_number_address_tv"
         android:layout_width="match_parent"

@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 
 import example.com.mymobilesafe.R;
+import example.com.mymobilesafe.home.BaseActivity;
+
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.Settings;
 import android.view.View;
@@ -21,26 +23,26 @@ import java.util.Map;
 /**
  * Created by zyp on 16-3-2.
  */
-public class SelectContactActivity extends Activity {
+public class SelectContactActivity extends BaseActivity {
     private ListView listView ;
     private SimpleAdapter contactsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_contact_layout);
-        initData();
         initView();
+        initData();
         setListener();
     }
 
-    private void initView() {
+    public void initView() {
         listView = (ListView) findViewById(R.id.select_contact_listview);
         contactsAdapter = new SimpleAdapter(this,getContactsData(),R.layout.contacts_layout_lv_item
                 ,new String[]{"name","number"},new int[]{R.id.tv_name,R.id.tv_number});
         listView.setAdapter(contactsAdapter);
     }
 
-    private void initData() {
+    public void initData() {
     }
 
     private void setListener(){

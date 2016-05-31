@@ -69,10 +69,10 @@ public class SecuritySetting4Activity extends SecurityBaseActivity {
         finish();
     }
 
-    private void initView() {
+    public void initView() {
         cb_complete_and_lockscreen = (CheckBox) findViewById(R.id.setting_item_cb);
     }
-    private void initData() {
+    public void initData() {
         if(sp.getBoolean(GloabalTools.REMOTE_AND_LOCKSCREEN,false)){
             cb_complete_and_lockscreen.setChecked(true);
         }else{
