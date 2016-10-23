@@ -1,6 +1,5 @@
 package example.com.mymobilesafe.home;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,12 +19,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import example.com.mymobilesafe.AppManage.AppManagerActivity;
+import example.com.mymobilesafe.appManage.AppManagerActivity;
 import example.com.mymobilesafe.R;
 import example.com.mymobilesafe.View.CustomTitleBar;
 import example.com.mymobilesafe.hightools.HighToolsMainActivity;
 import example.com.mymobilesafe.security.SecurityMainActivity;
 import example.com.mymobilesafe.setting.SettingActivity;
+import example.com.mymobilesafe.taskmanage.TaskManagerActivity;
 import example.com.mymobilesafe.util.GloabalTools;
 import example.com.mymobilesafe.util.MD5Util;
 
@@ -78,6 +78,10 @@ public class HomeActivity extends BaseActivity{
                     case 2:
                         Intent intent2 = new Intent(HomeActivity.this, AppManagerActivity.class);
                         startActivity(intent2);
+                        break;
+                    case 3:
+                        Intent intent3 = new Intent(HomeActivity.this, TaskManagerActivity.class);
+                        startActivity(intent3);
                         break;
                     case 7:
                         Intent intent7 = new Intent(HomeActivity.this, HighToolsMainActivity.class);

@@ -42,6 +42,9 @@
         <activity android:name=".security.SelectContactActivity" />
         <activity android:name=".hightools.SearchPhoneAreaActivity" />
         <activity android:name=".hightools.HighToolsMainActivity" />
+        <activity android:name=".appManage.AppManagerActivity" />
+        <activity android:name=".taskmanage.TaskManagerActivity"></activity>
+
 
         <receiver android:name=".security.receiver.BootComplete">
             <intent-filter>
@@ -78,7 +81,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".AppManage.AppManagerActivity"></activity>
+
     </application>
 
 </manifest>

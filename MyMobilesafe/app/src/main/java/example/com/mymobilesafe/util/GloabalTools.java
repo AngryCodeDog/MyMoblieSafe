@@ -1,17 +1,15 @@
 package example.com.mymobilesafe.util;
 
 import android.app.ActivityManager;
-import android.app.Service;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import example.com.mymobilesafe.AppManage.AppInfo;
+import example.com.mymobilesafe.appManage.AppInfo;
 
 /**
  * Created by zyp on 3/26/16.
@@ -93,6 +91,38 @@ public class GloabalTools {
             myAppInfos.add(appInfo);
         }
         return myAppInfos;
+    }
+
+    public static List<AppInfo> getRunningAppList(Context context){
+        List<AppInfo> runningAppList = new ArrayList<AppInfo>();
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfoList = activityManager.getRunningAppProcesses();
+        for(ActivityManager.RunningAppProcessInfo runningAppProcessInfo : runningAppProcessInfoList){
+            AppInfo appInfo = new AppInfo();
+            appInfo.name = runningAppProcessInfo.processName;
+            appInfo.name = runningAppProcessInfo.processName;
+        }
+        return null;
+    }
+
+    public static int getRunningAppCount(Context context){
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfoList = activityManager.getRunningAppProcesses();
+        return runningAppProcessInfoList.size();
+    }
+
+    public static long getAvailMemSize(Context context){
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+        return memoryInfo.availMem;
+    }
+
+    public static long getTotalMemSize(Context context){
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+        return memoryInfo.totalMem;
     }
 
 }

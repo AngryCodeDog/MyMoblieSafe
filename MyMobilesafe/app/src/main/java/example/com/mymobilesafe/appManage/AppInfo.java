@@ -1,4 +1,4 @@
-package example.com.mymobilesafe.AppManage;
+package example.com.mymobilesafe.appManage;
 
 import android.graphics.drawable.Drawable;
 

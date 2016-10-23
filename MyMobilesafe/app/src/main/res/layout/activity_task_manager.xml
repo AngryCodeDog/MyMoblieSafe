@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/tv_taskmanager_app_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在运行："
+            android:layout_marginLeft="15dp"/>
+        <TextView
+            android:id="@+id/tv_taskmanager_mem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="剩余/总内存"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"/>
+    </RelativeLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:id="@+id/ll_app_manager_progress"
+            android:id="@+id/ll_task_manager_progress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -26,13 +46,13 @@
                 />
         </LinearLayout>
         <ListView
-            android:id="@+id/lv_app_manager_applist"
+            android:id="@+id/lv_task_manager_applist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fastScrollEnabled="true">
         </ListView>
         <TextView
-            android:id="@+id/tv_appmanager_app_type"
+            android:id="@+id/tv_taskmanager_app_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="用户软件：4个"
@@ -42,4 +62,4 @@
 
     </FrameLayout>
 
-</RelativeLayout>
+</LinearLayout>
