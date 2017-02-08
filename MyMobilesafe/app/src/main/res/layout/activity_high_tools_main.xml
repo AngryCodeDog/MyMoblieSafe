@@ -18,5 +18,15 @@
         android:onClick="onClick"
         android:clickable="true"
         />
+    <TextView
+        android:id="@+id/high_tools_baidu_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="百度地图定位"
+        android:textSize="25sp"
+        android:layout_margin="10dp"
+        android:onClick="onClick"
+        android:clickable="true"
+        />
 
 </LinearLayout>

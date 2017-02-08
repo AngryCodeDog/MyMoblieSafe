@@ -40,5 +40,10 @@ public class HighToolsMainActivity extends BaseActivity {
             Intent intent7 = new Intent(HighToolsMainActivity.this, SearchPhoneAreaActivity.class);
             startActivity(intent7);
         }
+
+        if(view.getId() == R.id.high_tools_baidu_location){
+            Intent intent7 = new Intent(HighToolsMainActivity.this, HighToolsMainActivity.class);
+            startActivity(intent7);
+        }
     }
 }
