@@ -6,8 +6,8 @@ import android.view.View;
 
 import example.com.mymobilesafe.R;
 import example.com.mymobilesafe.View.CustomTitleBar;
+import example.com.mymobilesafe.hightools.baidulLocation.BaiduLocation;
 import example.com.mymobilesafe.home.BaseActivity;
-import example.com.mymobilesafe.util.GloabalTools;
 
 public class HighToolsMainActivity extends BaseActivity {
 
@@ -42,7 +42,7 @@ public class HighToolsMainActivity extends BaseActivity {
         }
 
         if(view.getId() == R.id.high_tools_baidu_location){
-            Intent intent7 = new Intent(HighToolsMainActivity.this, HighToolsMainActivity.class);
+            Intent intent7 = new Intent(HighToolsMainActivity.this, BaiduLocation.class);
             startActivity(intent7);
         }
     }
