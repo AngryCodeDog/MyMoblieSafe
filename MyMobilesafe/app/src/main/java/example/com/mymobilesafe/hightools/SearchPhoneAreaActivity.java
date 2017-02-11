@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import example.com.mymobilesafe.R;
+import example.com.mymobilesafe.View.CustomTitleBar;
 import example.com.mymobilesafe.home.BaseActivity;
 import example.com.mymobilesafe.util.dao.NumberAddressQueryUtils;
 
@@ -27,6 +28,7 @@ public class SearchPhoneAreaActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CustomTitleBar.getTitleBar(this,"查询手机号码归属地",true);
         setContentView(R.layout.activity_search_phone_number);
         initView();
         initData();
@@ -42,6 +44,11 @@ public class SearchPhoneAreaActivity extends BaseActivity {
     @Override
     public void initData() {
 
+    }
+
+    @Override
+    public void back() {
+        finish();
     }
 
     private void setListener(){
