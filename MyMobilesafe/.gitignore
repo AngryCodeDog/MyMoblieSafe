@@ -10,6 +10,6 @@
 #忽略掉bin文件gen文件和bin目录gen目录
 build/
 .gradle/
-.idea/
+.idea
 bin
 gen

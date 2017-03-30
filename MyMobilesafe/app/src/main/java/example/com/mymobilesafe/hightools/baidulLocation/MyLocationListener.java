@@ -12,6 +12,18 @@ import java.util.List;
  * Created by zyp on 2/9/17.
  */
 public class MyLocationListener implements BDLocationListener{
+    private Receiver receiver ;
+
+    public void setReceiver(Receiver receiver){
+        this.receiver = receiver;
+    }
+
+    //设置回调接口
+    public interface Receiver{
+        void receive(BDLocation location);
+    }
+
+
     @Override
     public void onReceiveLocation(BDLocation location) {
         //获取定位结果
@@ -102,6 +114,7 @@ public class MyLocationListener implements BDLocationListener{
         }
 
         Log.i("BaiduLocationApiDem", sb.toString());
+        receiver.receive(location);
     }
 
 }
