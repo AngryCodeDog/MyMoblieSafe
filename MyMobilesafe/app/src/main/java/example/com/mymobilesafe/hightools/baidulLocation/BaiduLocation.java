@@ -1,7 +1,9 @@
 package example.com.mymobilesafe.hightools.baidulLocation;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -24,7 +26,7 @@ import example.com.mymobilesafe.home.BaseActivity;
 public class BaiduLocation extends BaseActivity {
 
     MapView mMapView = null;
-
+    ImageView mIvLocation;
 
     public LocationClient mLocationClient = null;
 
@@ -52,6 +54,7 @@ public class BaiduLocation extends BaseActivity {
 
     @Override
     public void initData() {
+        mIvLocation = (ImageView) findViewById(R.id.iv_location);
         //获取地图控件引用
         mBaiduMap = mMapView.getMap();
         // 开启定位图层
@@ -70,6 +73,13 @@ public class BaiduLocation extends BaseActivity {
         initMapSet();
         //开始定位
         mLocationClient.start();
+
+        mIvLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLocationClient.start();
+            }
+        });
     }
 
 
