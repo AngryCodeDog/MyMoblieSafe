@@ -28,5 +28,15 @@
         android:onClick="onClick"
         android:clickable="true"
         />
+    <TextView
+        android:id="@+id/high_tools_smart_roboot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="智能机器人聊天"
+        android:textSize="25sp"
+        android:layout_margin="10dp"
+        android:onClick="onClick"
+        android:clickable="true"
+        />
 
 </LinearLayout>
