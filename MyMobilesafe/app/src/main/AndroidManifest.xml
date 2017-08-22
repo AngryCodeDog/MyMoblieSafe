@@ -86,7 +86,7 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"></service>
+            android:process=":remote" />
 
         <receiver
             android:name=".security.receiver.MyAdmin"
@@ -108,7 +108,8 @@
             android:exported="true" />
 
         <activity android:name=".hightools.baidulLocation.BaiduLocation" />
-        <activity android:name=".hightools.SmartRobootActivity"></activity>
+        <activity android:name=".hightools.SmartRobootActivity" />
+        <activity android:name=".hightools.EverydayJoke"></activity>
     </application>
 
 </manifest>

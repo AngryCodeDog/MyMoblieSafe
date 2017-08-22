@@ -49,6 +49,10 @@ public class HighToolsMainActivity extends BaseActivity {
             Intent intent7 = new Intent(HighToolsMainActivity.this, SmartRobootActivity.class);
             startActivity(intent7);
         }
+        if(view.getId() == R.id.high_tools_everyday_joke){
+            Intent intent7 = new Intent(HighToolsMainActivity.this, SmartRobootActivity.class);
+            startActivity(intent7);
+        }
     }
 
 }
