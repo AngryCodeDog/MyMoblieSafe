@@ -22,7 +22,7 @@ public interface APIService {
                                         @Query("key") String key);
 
     @GET("xiaohua/text")
-    @Headers({"Authorization:APPCODE b9803ce79fe0415790718d2a6378a385"})
+    @Headers("Authorization:APPCODE b9803ce79fe0415790718d2a6378a385")
     Call<JokeResponse> reqJoke(@Query("pagenum") String pagenum,
                                @Query("pagesize") String pagesize,
                                @Query("sort") String sort);

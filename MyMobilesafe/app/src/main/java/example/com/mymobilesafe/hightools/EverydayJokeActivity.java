@@ -16,8 +16,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class EverydayJoke extends BaseActivity {
+public class EverydayJokeActivity extends BaseActivity {
     private TextView tvJoke;
+    private int pagenum = 1;
+    private int jokeindex = 1;
+    private JokeResponse jokeResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,12 @@ public class EverydayJoke extends BaseActivity {
         CustomTitleBar.getTitleBar(this,"每日一笑",true);
         setContentView(R.layout.activity_everyday_joke);
         initView();
-        toString();
+        toReqJoke();
+    }
+
+    @Override
+    public void back() {
+        this.finish();
     }
 
     @Override
@@ -41,8 +49,15 @@ public class EverydayJoke extends BaseActivity {
 
     public void onClick(View view){
         if(view.getId() == R.id.bt_again_joke){
-           //去请求笑话
-            toReqJoke();
+            if(jokeindex < 20){
+                tvJoke.setText(jokeResponse.getResult().getList().get(jokeindex).getContent());
+                jokeindex ++;
+            }else{
+                jokeindex = 1;
+                //去请求笑话
+                toReqJoke();
+            }
+
         }
     }
 
@@ -54,12 +69,14 @@ public class EverydayJoke extends BaseActivity {
                 .build();
         APIService testService = retrofit.create(APIService.class);
         //拿到代理对象，然后调用该方法
-        Call<JokeResponse> call = testService.reqJoke("1","1","addtime");
+        Call<JokeResponse> call = testService.reqJoke(pagenum+"","20","addtime");
         //用法和OkHttp的call如出一辙,不同的是它的回调在主线程；
         call.enqueue(new Callback<JokeResponse>() {
             @Override
             public void onResponse(Call<JokeResponse> call, Response<JokeResponse> response) {
-                tvJoke.setText(response.body().getResult().getList().get(0).getContent());
+                jokeResponse = response.body();
+                //请求之后设置第一个
+                tvJoke.setText(jokeResponse.getResult().getList().get(0).getContent());
             }
 
             @Override
@@ -68,5 +85,6 @@ public class EverydayJoke extends BaseActivity {
 
             }
         });
+        pagenum++;
     }
 }

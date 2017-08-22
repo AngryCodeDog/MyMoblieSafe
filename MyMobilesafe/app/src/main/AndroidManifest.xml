@@ -109,7 +109,7 @@
 
         <activity android:name=".hightools.baidulLocation.BaiduLocation" />
         <activity android:name=".hightools.SmartRobootActivity" />
-        <activity android:name=".hightools.EverydayJoke"></activity>
+        <activity android:name=".hightools.EverydayJokeActivity"></activity>
     </application>
 
 </manifest>
