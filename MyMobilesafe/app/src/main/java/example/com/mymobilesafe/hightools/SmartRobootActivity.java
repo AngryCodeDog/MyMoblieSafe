@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import example.com.mymobilesafe.R;
+import example.com.mymobilesafe.View.CustomTitleBar;
 import example.com.mymobilesafe.bean.SRResponse;
 import example.com.mymobilesafe.home.BaseActivity;
 import example.com.mymobilesafe.netutil.APIService;
@@ -29,6 +30,7 @@ public class SmartRobootActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CustomTitleBar.getTitleBar(this,"智能聊天机器人",true);
         setContentView(R.layout.activity_smart_roboot);
         initView();
     }
@@ -55,7 +57,12 @@ public class SmartRobootActivity extends BaseActivity {
 
     }
 
-    public void reqSmartRoboot(String info,String type,String loc,String userid){
+    @Override
+    public void back() {
+        finish();
+    }
+
+    public void reqSmartRoboot(String info, String type, String loc, String userid){
 
         Retrofit retrofit = new Retrofit.Builder()
           .baseUrl("http://op.juhe.cn/")
